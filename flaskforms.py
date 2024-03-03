@@ -16,7 +16,7 @@ def loadJSON():
 
 @app.route("/" ,methods=['GET', 'POST'])
 def pickupform():
-    # Dynamic data to be passed to the template which is fodd_labels
+    # Dynamic data to be passed to the template which is food_labels
     dynamic_labels =  loadJSON()
     if request.method == 'POST':
         # Print the form data to the console
