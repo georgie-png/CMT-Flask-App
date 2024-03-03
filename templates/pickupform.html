@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Flask Tutorial</title>
+  </head>
+  <body>
+    {% extends "template.html" %}
+    {% block content %}
+    
+    <h1> Pickup Form </h1>
+    <p> <b>What have you got? </b></p>
+    
+    <form method="post" id="pickup-form">
+      <!-- Loop through dynamic_labels and generate labels -->
+      {% for label in dynamic_labels %}
+      <!--Displays a label for each item in dynamic_labels. -->
+        <label for="{{ label }}"><b>{{ label }}:</b></label>
+         <!--Generates an input field with type "number" and an ID and name based on the current label in the loop.. -->
+        <input type="number" id="{{ label }}" name="Number_{{ label }}" />
+        <br>
+      {% endfor %}
+      <input type="submit" class="submit" value="Submit">
+    </form>
+    {% endblock %}
+  </body>
+  </html>
