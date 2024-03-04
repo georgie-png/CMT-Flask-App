@@ -17,7 +17,7 @@
       <!--Displays a label for each item in dynamic_labels. -->
         <label for="{{ label }}"><b>{{ label }}:</b></label>
          <!--Generates an input field with type "number" and an ID and name based on the current label in the loop.. -->
-        <input type="number" id="{{ label }}" name="Number_{{ label }}" />
+        <input type="number" id="{{ label }}" name="Number_{{ label }}" value="0" />
         <br>
       {% endfor %}
       <input type="submit" class="submit" value="Submit">
