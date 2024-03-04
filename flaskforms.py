@@ -12,21 +12,35 @@ def loadJSON():
         return data["food_labels"]
 
 
-   
+@app.route("/")
+def index():
+    return render_template("template.html")
 
-@app.route("/" ,methods=['GET', 'POST'])
+@app.route("/pickup" ,methods=['GET', 'POST'])
 def pickupform():
     # Dynamic data to be passed to the template which is food_labels
     dynamic_labels =  loadJSON()
+
     if request.method == 'POST':
         # Print the form data to the console
         for key, value in request.form.items():
             print(f'{key}: {value}')
+
+    
     return render_template("pickupform.html", dynamic_labels=dynamic_labels)
 
-@app.route("/kitchen")
+@app.route("/kitchen",methods=['GET', 'POST'])
 def kitchenform():
-    return render_template("kitchenform.html")
+        # Dynamic data to be passed to the template which is food_labels
+    dynamic_labels =  loadJSON()
+
+    if request.method == 'POST':
+        # Print the form data to the console
+        for key, value in request.form.items():
+            print(f'{key}: {value}')
+
+    
+    return render_template("kitchenform.html", dynamic_labels=dynamic_labels)
 
 
     
