@@ -11,11 +11,12 @@ def loadJSON():
      #returns the value associated with the key "food_labels" from the loaded JSON data
         return data["food_labels"]
 
-
+# Renders the basic template as the index
 @app.route("/")
 def index():
     return render_template("template.html")
 
+# Renders the pickup form from dynamic values
 @app.route("/pickup" ,methods=['GET', 'POST'])
 def pickupform():
     # Dynamic data to be passed to the template which is food_labels
@@ -29,6 +30,7 @@ def pickupform():
     
     return render_template("pickupform.html", dynamic_labels=dynamic_labels)
 
+# Renders the pickup form from dynamic values
 @app.route("/kitchen",methods=['GET', 'POST'])
 def kitchenform():
         # Dynamic data to be passed to the template which is food_labels
@@ -41,7 +43,6 @@ def kitchenform():
 
     
     return render_template("kitchenform.html", dynamic_labels=dynamic_labels)
-
 
     
 if __name__ == "__main__":

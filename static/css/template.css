@@ -5,4 +5,23 @@ body {
 
 h1 {
     color: white;
+    text-align: center;
+}
+
+#nav {
+    background-color:#eeeeee;
+    display:inline;      
+}
+.menu li{
+    display: inline;
+}
+
+.menu{
+    display: flex;
+    justify-content: space-around;
+}
+
+a{
+    color: gray;
+    font-size: x-large;
 }
