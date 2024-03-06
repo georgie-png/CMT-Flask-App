@@ -1,12 +1,30 @@
 body {
     background-color: rgb(78, 107, 170);
     font-family: Arial, sans-serif;
+    color: ghostwhite;
+}
+
+.borderbox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.templateHeader{
+    color: white;
+    text-align: center;
+    border: 10px ridge black; /* Define border style */
+    background-color: gray;
+    width:500px;
+    padding-top: 15px;
+    height: 50px;
 }
 
 h1 {
     color: white;
     text-align: center;
 }
+
 
 #nav {
     background-color:#eeeeee;
@@ -22,6 +40,48 @@ h1 {
 }
 
 a{
-    color: gray;
+    color: white;
     font-size: x-large;
 }
+
+.kitchenform_intro{
+    text-align: center;
+    padding-bottom: 30px;
+
+}
+.pickupform_intro{
+    text-align: center;
+    padding-bottom: 30px;
+
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items:center /* Center the form horizontally */
+}
+
+.form-group {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content:space-around /* Distribute items with space around them */
+}
+
+label {
+    flex: 1; /* Make labels take up equal space */
+    margin-right: 10px;
+}
+
+input[type="option"],
+select {
+    flex: 0.45; /* Make input fields and select take up more space */
+}
+
+.submit{
+    margin-top: 20px;
+    width:60px;
+    height:30px;
+    font-weight: bold;
+}
+
+
