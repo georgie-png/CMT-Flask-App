@@ -55,6 +55,8 @@ def pickupform():
 def kitchenform():
     global data
 
+
+ 
     if request.method == 'POST':
         # Print the form data to the console
         values = []
@@ -63,8 +65,7 @@ def kitchenform():
             values.append(value)            
 
         saveDataJSON(values)
-
-    return render_template("kitchenform.html", dynamic_labels=data["food_labels"])
+    return render_template("kitchenform.html", dynamic_labels=data["food_labels"],dynamic_options=data['kitchen_labels'])
 
     
 if __name__ == "__main__":
