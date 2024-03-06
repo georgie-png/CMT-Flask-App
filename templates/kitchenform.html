@@ -9,19 +9,39 @@
     {% block content %}
     
     <h1> Kitchen Form </h1>
-    <p> Enter your details </p>
-      
+    <h4 class="kitchenform_intro"> Enter your details please. </h4>
+    <div class="form-container">
     <form method="post" id="pickup-form">
+
+
+      <!-- Add a dropdown menu -->
+      <div class="form-group">
+        <label for="Kitchen"><b>Pick a Kitchen:</b></label>
+        <select id="Kitchen" name="Kitchen">
+            <!-- Loop through dynamic_options and generate options -->
+          {% for option in dynamic_options %}
+          <option value="{{ option }}">{{ option }}</option>
+          {% endfor %}
+        </select>
+        <br>
+      </div>
+
       <!-- Loop through dynamic_labels and generate labels -->
       {% for label in dynamic_labels %}
       <!--Displays a label for each item in dynamic_labels. -->
+      <div class="form-group">
         <label for="{{ label }}"><b>{{ label }}:</b></label>
          <!--Generates an input field with type "number" and an ID and name based on the current label in the loop.. -->
         <input type="number" id="{{ label }}" name="Number_{{ label }}" value="0" />
         <br>
+      </div>
       {% endfor %}
+      <div class="form-group">
       <input type="submit" class="submit" value="Submit">
-    </form>
+    </div>
+  </form>
+    </div>
+  </div>
     {% endblock %}
   </body>
 </html>
