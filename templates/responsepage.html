@@ -8,7 +8,8 @@
 
 </head>
 <body>
-    <div class="form-container">
+    <div class="borderboxresponse">
+    <div class="response-container">
     <h1>Thank You!</h1>
     <p>Your form has been submitted successfully.</p>
     <h2>Submitted Form Data:</h2>
@@ -17,10 +18,14 @@
         <!--Loops over the items over values. Key will represent the key of each key-value pair, and value will represent the corresponding value. -->
         {% for key, value in values.items() %}
         <!--Displays the key of the current key value pair -->
-        <li>{{ key }}:{{ value }}</li>
+        <li>
+                        <span class="key">{{ key }}:</span>
+                        <span class="value">{{ value }}</span>
+                    </li>
         {% endfor %}
     </div>
     </ul>
+</div>
 </div>
 </body>
 </html>
