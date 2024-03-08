@@ -1,6 +1,13 @@
+@font-face {
+    font-family: Lineal;
+    src: url(Downloads/lineal-main/fonts/Static/WEB)format('woff2');
+    font-weight: normal, bold;
+    
+}
+
 body {
-    background-color: rgb(78, 107, 170);
-    font-family: Arial, sans-serif;
+    background-color: #A6A195;
+    font-family: 'Lineal',Arial, sans-serif;
     color: ghostwhite;
 }
 
@@ -23,6 +30,7 @@ body {
 h1 {
     color: white;
     text-align: center;
+   
 }
 
 
@@ -39,10 +47,23 @@ h1 {
     justify-content: space-around;
 }
 
+
 a{
     color: white;
     font-size: x-large;
+    border: 7px outset black; /* Define border style */
+    border-radius: 10px;
+    padding:8px;
 }
+
+.pickuplink:hover{
+    background-color: #422855; /*Changes colour when hover */
+}
+
+.kitchenlink:hover{
+    background-color: #e7d770; /*Changes colour when hover */
+}
+
 
 .kitchenform_intro{
     text-align: center;
@@ -58,7 +79,11 @@ a{
 .form-container {
     display: flex;
     flex-direction: column;
-    align-items:center /* Center the form horizontally */
+    align-items:center; /* Center the form horizontally */
+    border: 7px outset black; /* Define border style */
+    border-radius: 20px;
+    padding: 10px;
+    width:800px
 }
 
 .form-group {
@@ -83,5 +108,50 @@ select {
     height:30px;
     font-weight: bold;
 }
+
+
+/* CSS to style the key-value pairs in the response page */
+.borderboxresponse{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.response-container{
+    display: flex;
+    flex-direction: column;
+    align-items:center; /* Center the form horizontally */
+    border: 7px outset black; /* Define border style */
+    border-radius: 20px;
+    padding: 10px;
+    width:800px;
+    background-color: #614e41;
+}
+
+
+.form-group ul {
+    list-style:circle;
+    padding: 0;
+}
+
+.form-group li {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between; /* Equal space between key and value */
+}
+
+.key {
+    font-weight: bold;
+    margin-right: 10px; /* Optional margin between key and value */
+}
+
+
+.value {
+    color: black;
+}
+
+   
+
 
 
