@@ -1,0 +1,3 @@
+[submodule "smuc_kitchen"]
+	path = smuc_kitchen
+	url = https://github.com/kian-hunziker/smuc_kitchen
