@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from dataprocessors import CMT_Data
+from cmt_data import CMT_Data
 
 
 app = Flask(__name__)
