@@ -137,6 +137,12 @@ class CMT_Data:
 
 
     def run_classify(self, values):
+        """
+        Takes in the values and then forms them into the right array shape for the model, runs it through classifier to be displayed and svaed.
+        :param values: A list of the food values taken from the form
+        :return display_values: a set of the kitchens chosen and the food to be taken there
+        :return classification_data: input, raw_output, classification and timestamp to be saved to json
+        """
 
         np_kitchen_data = [] 
         np_classify_data = []
@@ -161,21 +167,24 @@ class CMT_Data:
 
         classifications = raw_classifications.argmax(axis=1)#np.where(raw_classifications > 0.1)
 
-        exchanged_data =  {}
+        classification_data =  {}
 
-        exchanged_data['input'] = np_classify_data
-        exchanged_data['raw_classification'] = raw_classifications
-        exchanged_data['classification'] = classifications
-        exchanged_data['time_stamp'] = datetime.now()
+        classification_data['input'] = np_classify_data
+        classification_data['raw_classification'] = raw_classifications
+        classification_data['classification'] = classifications
+        classification_data['time_stamp'] = datetime.now()
 
         display_values = {}
 
         for i, classification in enumerate(classifications):
+
+            if values[i] == 0:
+                continue
             kitchen_lable = self.json['kitchen_labels'][classification]
             food_lable = self.json['food_labels'][i]
             display_values[food_lable] = kitchen_lable
 
-        return display_values, exchanged_data
+        return display_values, classification_data
 
 
 
