@@ -25,7 +25,7 @@ class CMT_Data:
 
         self.working_file = file_name
 
-        self.setup_kitchens()
+
 
         self.model = load_model_for_inference('./trained_models/example_model')
 
@@ -36,6 +36,7 @@ class CMT_Data:
         #Load data from a JSON file 
         with open(file_name,"r") as read_file:
             self.json = json.load(read_file)
+        self.setup_kitchens()
 
 
 
@@ -99,20 +100,23 @@ class CMT_Data:
             
             values.append(value)    
 
+        display_values, classified_data = self.run_classify(values)
+
+
         pickup_data = {}
         pickup_data['food_data'] = values
         pickup_data['time_stamp'] = datetime.now()
 
         try:
-
+            self.json["classified_data"].append(classified_data)
             self.json["pickup_data"].append(pickup_data)
 
         except:
+            self.json["classified_data"]=[classified_data]
             self.json["pickup_data"]=[pickup_data]
 
         self.save_JSON()
 
-        display_values = self.run_classify(values)
 
         return display_values
 
@@ -157,6 +161,13 @@ class CMT_Data:
 
         classifications = raw_classifications.argmax(axis=1)#np.where(raw_classifications > 0.1)
 
+        exchanged_data =  {}
+
+        exchanged_data['input'] = np_classify_data
+        exchanged_data['raw_classification'] = raw_classifications
+        exchanged_data['classification'] = classifications
+        exchanged_data['time_stamp'] = datetime.now()
+
         display_values = {}
 
         for i, classification in enumerate(classifications):
@@ -164,7 +175,7 @@ class CMT_Data:
             food_lable = self.json['food_labels'][i]
             display_values[food_lable] = kitchen_lable
 
-        return display_values
+        return display_values, exchanged_data
 
 
 
@@ -174,4 +185,6 @@ class Kitchen:
 
         self.food_data = [0]*num_foods
         self.name = name
+        self.last_modified = datetime.now()
+
 

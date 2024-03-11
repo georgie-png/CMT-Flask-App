@@ -109,12 +109,13 @@ a{
 .form-group {
     margin-bottom: 10px;
     display: flex;
-    justify-content:space-around /* Distribute items with space around them */
+    justify-content:space-around ;/* Distribute items with space around them */
+    flex-flow: column;
 }
 
 label {
     flex: 1; /* Make labels take up equal space */
-    margin-right: 10px;
+    margin-bottom: 3px;
 }
 
 input[type="option"],
@@ -127,6 +128,7 @@ select {
     width:60px;
     height:30px;
     font-weight: bold;
+    align-self: center;
 }
 
 
