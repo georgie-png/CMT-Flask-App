@@ -10,21 +10,39 @@ body {
     font-family: 'Lineal',Arial, sans-serif;
     color: ghostwhite;
 }
+.borderboxhdr{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    overflow: auto;
+    border: 10px ridge black; /* Define border style */
+    background-color: gray;
+    width: 90%;
+    padding-bottom: 10px;
+    border-radius: 40px;
+    margin-left: auto;
+    margin-right: auto;
+}
 
 .borderbox{
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-flow: column;
+    overflow:hidden;
+    border: 10px ridge black; /* Define border style */
+    background-color: gray;
+    width: 90%;
+    padding-bottom: 10px;
+    border-radius: 40px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .templateHeader{
     color: white;
     text-align: center;
-    border: 10px ridge black; /* Define border style */
-    background-color: gray;
-    width:500px;
-    padding-top: 15px;
-    height: 50px;
 }
 
 h1 {
@@ -45,6 +63,8 @@ h1 {
 .menu{
     display: flex;
     justify-content: space-around;
+    width: 100%;
+    padding: 0;
 }
 
 
@@ -82,7 +102,7 @@ a{
     align-items:center; /* Center the form horizontally */
     border: 7px outset black; /* Define border style */
     border-radius: 20px;
-    padding: 10px;
+    padding-top: 30px;
     width:800px
 }
 

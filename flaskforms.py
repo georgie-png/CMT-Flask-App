@@ -9,7 +9,6 @@ data = CMT_Data("./Data/CMT_Data.json")
 # Renders the basic template as the index
 @app.route("/")
 def index():
-    
     return render_template("template.html")
 
 # Renders the pickup form from dynamic values
@@ -20,7 +19,6 @@ def pickupform():
     if request.method == 'POST':
 
         display_values =  data.add_pickup_data(request.form.items())
-
         # Render response page template with form data if request method is post 
         return render_template("responsepage.html", values=display_values)
     
