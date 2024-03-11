@@ -25,8 +25,6 @@ class CMT_Data:
 
         self.working_file = file_name
 
-
-
         self.model = load_model_for_inference('./trained_models/example_model')
 
 
@@ -37,6 +35,7 @@ class CMT_Data:
         with open(file_name,"r") as read_file:
             self.json = json.load(read_file)
         self.setup_kitchens()
+
 
 
 
@@ -133,6 +132,20 @@ class CMT_Data:
 
         num_foods = len(self.json['food_labels'])
         self.kitchens = [Kitchen(num_foods, name) for name in self.json['kitchen_labels']]
+
+        indxs = np.zeros(len(self.kitchens), dtype=np.int32)
+
+        for kitchen_data in self.json['kitchen_data']:
+
+            label = kitchen_data['kitchen_lable'] 
+
+            if indxs[label] == 0:
+                indxs[label] = 1
+                self.kitchens[label].food_data = kitchen_data['food_data']
+                
+            
+            if np.sum(indxs) == len(self.kitchens):
+                return
 
 
 
