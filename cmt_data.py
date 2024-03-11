@@ -130,8 +130,7 @@ class CMT_Data:
     
     def setup_kitchens(self):
 
-        num_foods = len(self.json['food_labels'])
-        self.kitchens = [Kitchen(num_foods, name) for name in self.json['kitchen_labels']]
+        self.kitchens = [Kitchen(self.json['food_labels'], name) for name in self.json['kitchen_labels']]
 
         indxs = np.zeros(len(self.kitchens), dtype=np.int32)
 
@@ -141,11 +140,13 @@ class CMT_Data:
 
             if indxs[label] == 0:
                 indxs[label] = 1
-                self.kitchens[label].food_data = kitchen_data['food_data']
+                self.kitchens[label].restor_kitchen(kitchen_data['food_data'], kitchen_data['time_stamp'])
                 
             
             if np.sum(indxs) == len(self.kitchens):
-                return
+                break
+
+        print("Indxs: ",indxs)
 
 
 
@@ -203,10 +204,29 @@ class CMT_Data:
 
 class Kitchen:
 
-    def __init__(self, num_foods, name):
+    def __init__(self, food_lables, name):
 
-        self.food_data = [0]*num_foods
+        self.food_data = [0]*len(food_lables)
         self.name = name
         self.last_modified = datetime.now()
+        self.food_lables = food_lables
+
+
+    def set_foods(self, new_food_data):
+
+        self.food_data = new_food_data
+        self.last_modified = datetime.now()
+
+        self.display_val = {}
+
+        for key, val in zip(self.food_lables,self.food_data):
+            self.display_val[key]=val
+
+        self.display_val['last_modified']=self.last_modified
+
+        
+    def restor_kitchen(self, food_data, last_modified):
+        self.food_data = food_data
+        self.last_modified = last_modified
 
 
