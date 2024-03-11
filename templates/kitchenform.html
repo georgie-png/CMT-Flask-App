@@ -34,7 +34,7 @@
       <div class="form-group">
         <label for="{{ label }}"><b>{{ label }}:</b></label>
          <!--Generates an input field with type "number" and an ID and name based on the current label in the loop.. -->
-        <input type="number" id="{{ label }}" name="Number_{{ label }}" value="0" />
+        <input type="number" id="{{ label }}" name="Number_{{ label }}" value="0" min="0"/>
         <br>
       </div>
       {% endfor %}
