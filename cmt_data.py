@@ -27,17 +27,11 @@ class CMT_Data:
 
         self.model = load_model_for_inference('./trained_models/example_model')
 
-
-
-
     def load_JSON(self, file_name):
         #Load data from a JSON file 
         with open(file_name,"r") as read_file:
             self.json = json.load(read_file)
         self.setup_kitchens()
-
-
-
 
     def save_JSON(self, time_stamp = False):
 
@@ -51,7 +45,6 @@ class CMT_Data:
         #save data from a JSON file 
         with open(file_name,"w") as write_file:
             json.dump(self.json, write_file, indent=4, default=str)
-
 
 
     def add_kitchen_data(self, form_data):
@@ -75,12 +68,9 @@ class CMT_Data:
         kitchen_data['time_stamp'] = datetime.now()
         self.kitchens[kitchen_index].food_data = kitchen_data['food_data']
         
-        print(self.kitchens[kitchen_index].food_data)
-
         try:
 
             self.json["kitchen_data"].append(kitchen_data)
-
 
         except:
             self.json["kitchen_data"]=[kitchen_data]
@@ -88,7 +78,7 @@ class CMT_Data:
 
         self.save_JSON()
 
-        return display_values;
+        return display_values
 
     def add_pickup_data(self, form_data):
 
@@ -116,8 +106,8 @@ class CMT_Data:
 
         self.save_JSON()
 
-
         return display_values
+
 
     def check_kitchen_indx(self, this_kitchen):
 
@@ -142,13 +132,8 @@ class CMT_Data:
                 indxs[label] = 1
                 self.kitchens[label].restor_kitchen(kitchen_data['food_data'], kitchen_data['time_stamp'])
                 
-            
             if np.sum(indxs) == len(self.kitchens):
                 break
-
-        print("Indxs: ",indxs)
-
-
 
     def run_classify(self, values):
         """
@@ -174,8 +159,6 @@ class CMT_Data:
             np_classify_data.append(this_value)
             
         np_classify_data =np.array(np_classify_data, dtype=np.float32)
-
-        print("SHAPE: ", np.shape(np_classify_data))
 
         raw_classifications = classify(self.model[0] , np_classify_data)
 
@@ -216,7 +199,17 @@ class Kitchen:
 
         self.food_data = new_food_data
         self.last_modified = datetime.now()
+        self.update_display_val()
 
+
+        
+    def restor_kitchen(self, food_data, last_modified):
+        self.food_data = food_data
+        self.last_modified = last_modified
+        self.update_display_val()
+
+
+    def update_display_val(self):
         self.display_val = {}
 
         for key, val in zip(self.food_lables,self.food_data):
@@ -225,8 +218,3 @@ class Kitchen:
         self.display_val['last_modified']=self.last_modified
 
         
-    def restor_kitchen(self, food_data, last_modified):
-        self.food_data = food_data
-        self.last_modified = last_modified
-
-
