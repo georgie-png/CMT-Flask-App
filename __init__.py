@@ -30,7 +30,7 @@ def smuc_app(test_config=None):
         
         return render_template("pickupform.html", dynamic_labels=data.json["food_labels"])
 
-    # Renders the pickup form from dynamic values
+    # Renders the kitchen form from dynamic values
     @app.route("/kitchen",methods=['GET', 'POST'])
     def kitchenform():
         global data
@@ -43,6 +43,28 @@ def smuc_app(test_config=None):
         
         # Render form template with dynamic values
         return render_template("kitchenform.html", dynamic_labels=data.json["food_labels"],dynamic_options=data.json['kitchen_labels'])
+    
+     # Renders the overview page displaying data for all kitchens.
+    @app.route("/overview")
+    def overview():
+
+        global data  # Indicates that 'data' is a global variable
+
+        #Get the kitchens array direclty from CMT_Data 
+        kitchens = data.kitchens
+
+        #Intialize an empty list to store display values for all kitchens
+        kitchens_display_values = []
+
+         # Iterate through each kitchen in the kitchens array
+        for kitchen in kitchens:
+        #Get the display value for the current kitchen
+            display_val = kitchen.get_display_val()
+        # Append the display value to the list
+            kitchens_display_values.append(display_val)
+        # Return the list of display values for all kitchens 
+        return render_template("overview.html", kitchens_display_values=kitchens_display_values)
+        
 
     # returns the flask app
     return app
