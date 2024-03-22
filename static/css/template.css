@@ -32,7 +32,7 @@ body {
     flex-flow: column;
     overflow:hidden;
     border: 10px ridge black; /* Define border style */
-    background-color: gray;
+    background-color: rgba(128, 128, 128, 0.7);
     width: 90%;
     padding-bottom: 10px;
     border-radius: 40px;
@@ -84,6 +84,10 @@ a{
     background-color: #e7d770; /*Changes colour when hover */
 }
 
+.overviewlink:hover{
+    background-color: #614e41; /*Changes colour when hover */
+}
+
 
 .kitchenform_intro{
     text-align: center;
@@ -100,7 +104,8 @@ a{
     display: flex;
     flex-direction: column;
     align-items:center; /* Center the form horizontally */
-    border: 7px outset black; /* Define border style */
+    border: 10px outset black; /* Define border style */
+    background-color: rgb(250, 229, 194, 0.3);
     border-radius: 20px;
     padding-top: 30px;
     width:800px
@@ -133,6 +138,17 @@ select {
 
 
 /* CSS to style the key-value pairs in the response page */
+
+.backBTN{
+    position: absolute;
+    top:5%;
+    left:23%;
+    text-decoration: none;
+    color: white; /* Change color as needed */
+    border: 5px outset white; /* Define border style */
+}
+
+
 .borderboxresponse{
     display: flex;
     justify-content: center;
@@ -170,10 +186,99 @@ select {
 
 
 .value {
-    color: black;
+    color: white;
 }
 
+
+/* Media Query for differet dimesions for tablet and phones to make more mobile friendly! */
+
+@media screen and (max-width: 1000px) {
+    .backBTN{
+        position: absolute;
+        top:8%;
+        left:12%;
+        text-decoration: none;
+        color: white; /* Change color as needed */
+        border: 5px outset white; /* Define border style */
+    }
+}
    
+@media screen and (max-width: 650px) {
+    .form-container {
+        display: flex;
+        flex-direction: column;
+        align-items:center; /* Center the form horizontally */
+        border: 10px outset black; /* Define border style */
+        background-color: rgb(250, 229, 194, 0.3);
+        border-radius: 20px;
+        padding-top: 10px;
+        width:500px
+    }
 
+    .response-container{
+        display: flex;
+        flex-direction: column;
+        align-items:center; /* Center the form horizontally */
+        border: 7px outset black; /* Define border style */
+        border-radius: 20px;
+        padding: 10px;
+        width:500px;
+        background-color: #614e41;
+    }
 
+    .backBTN{
+        position: absolute;
+        top:3%;
+        left:12%;
+        text-decoration: none;
+        color: white; /* Change color as needed */
+        border: 5px outset white; /* Define border style */
+    }
+    
+    
+  }
 
+  @media screen and (max-width: 480px) {
+    .form-container {
+        display: flex;
+        flex-direction: column;
+        align-items:center; /* Center the form horizontally */
+        border: 10px outset black; /* Define border style */
+        background-color: rgb(250, 229, 194, 0.3);
+        border-radius: 20px;
+        padding-top: 10px;
+        width:375px
+    }
+
+    .form-group {
+        margin-bottom: 10px;
+        padding-left:10px;
+        width:95%;
+        display: flex;
+        justify-content:space-around ;/* Distribute items with space around them */
+        flex-flow: column;
+    }
+
+    .response-container{
+        display: flex;
+        flex-direction: column;
+        align-items:center; /* Center the form horizontally */
+        border: 7px outset black; /* Define border style */
+        border-radius: 20px;
+        padding: 10px;
+        width:400px;
+        background-color: #614e41;
+    }
+
+    .backBTN{
+        position: absolute;
+        top:3%;
+        left:8%;
+        text-decoration: none;
+        color: white; /* Change color as needed */
+        border: 5px outset white; /* Define border style */
+    }
+    
+  }
+
+  
