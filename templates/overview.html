@@ -11,69 +11,29 @@
 <body>
     <!-- Back Button -->
 <a class="backBTN" href="javascript:history.back()"><i class="fa-solid fa-arrow-left"></i></a>
-    <div class="borderboxresponse">
-        <div class="response-container">
+
+    <div class="OverviewKitchenBorder"> 
+        <div class="Overview-Container">
         <h1>Overview</h1>
         <p>Summary of all the kitchen stocks.</p>
-        <!-- Iterate over kitchens_display_values and display data for each kitchen -->
+        <div class="Overview-Group" >
+    <!-- Iterate over kitchens_display_values and display data for each kitchen -->
     {% for kitchen_display_val in kitchens_display_values %}
-    <!--Displays the name of each kitchen-->
-    <!-- Display the name of each kitchen as a hyperlink -->
     <ul>
         <!--Iterates over each key-value pair in the kitchen_display_val dictionary, which represents the display values for a kitchen.-->
         {% for food_label, food_value in kitchen_display_val.items() %}
-        <!--Displays each food label along with its value as list items within the list.-->
-            <li>{{ food_label }}: {{ food_value }}</li>
+        <!--Displays each food label along with its value as list items within the list also the timestap for each kitchen.-->
+            <li>
+                <span class= "foodlabel">{{ food_label }}:</span> 
+                <span class= "foodvalue">{{ food_value }}</span>   
+            </li>
         {% endfor %}
     </ul>
-    <!--Displays the last modified timestamp for each kitchen.-->
-    <p>Last Modified: {{ kitchen_display_val.last_modified }}</p>
-{% endfor %}
+    {% endfor %}
+</div>
+    </div>
+</div>
 </head>
-
-
-
-<!--JavaScript Code-->
-<script>
-  document.addEventListener('keydown', function(event) {
-    //Executes the querySelectorAll method to find all elements with the class 'kitchen-list'.
-    var kitchenList = document.querySelectorAll('.kitchen-list');
-    // Initializes a variable named currentIndex and sets its value to 0.
-    var currentIndex = 0;
-
-    //Find the currently visible kitchen list in the loop
-    for (var i=0; i <kitchenList.length; i++) {
-        //Checks if the current kitchen list element's display style property is not set to 'none' in which the kitchen is vislby set on the page.
-        if(kitchenList[i].style.display !=='none') {
-            //This index represents the position of the currently visible kitchen
-            currentIndex = i;
-            //The break statement is used to exit the loop early once a visible kitchen list is found.
-            break;
-        }
-    }
-
-  //Hide the currently visible kitchen list when equal to none so won't show on the page.
-  kitchenLists[currentIndex].style.display = 'none';
-
-  // Determine the next index based on arrow key pressed
-  var nextIndex;
-  //Checks whether the key pressed is either the 'ArrowUp' key or the 'ArrowLeft' key. 
-    if (event.key === 'ArrowUp' || event.key === 'ArrowLeft') {
-        // If currentIndex is greater than 0, nextIndex is decremented by 1 to move to the previous kitchen list.
-        nextIndex = currentIndex === 0 ? kitchenLists.length - 1 : currentIndex - 1;
-        // Checks whether the key pressed is either the 'ArrowDown' key or the 'ArrowRight' key.
-        } else if (event.key === 'ArrowDown' || event.key === 'ArrowRight') {
-        // Calculates the index of the next kitchen list to show by moving one index forward in the list, and looping back to the beginning if it reaches the end.
-        nextIndex = (currentIndex + 1) % kitchenLists.length;
-        }
-
-  //Show the next kitchen list
-  kitchenLists[nextIndex].style.display = 'block';
-
-  });
-
-</script>
-
     
 </body>
 </html>
