@@ -190,6 +190,56 @@ select {
 }
 
 
+/* CSS to style the key-value pairs in the Overview Page */
+
+.OverviewKitchenBorder{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Overview-Container{
+    display: flex;
+    flex-direction: column;
+    align-items:center; /* Center the form horizontally */
+    border: 7px outset black; /* Define border style */
+    border-radius: 20px;
+    padding: 10px;
+    width:800px;
+    background-color: #614e41;
+}
+
+.Overview-Group{
+    margin-bottom: 10px;
+    display: flex;
+    justify-content:space-around ;/* Distribute items with space around them */
+    flex-flow: column;
+}
+
+.Overview-Group ul {
+    list-style:circle;
+    padding: 0;
+}
+
+.Overview-Group li {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between; /* Equal space between key and value */
+}
+
+.foodlabel {
+    font-weight: bold;
+    margin-right: 10px; /* Optional margin between key and value */
+}
+
+.foodvalue {
+    color: white;
+}
+
+
+
+
+
 /* Media Query for differet dimesions for tablet and phones to make more mobile friendly! */
 
 @media screen and (max-width: 1000px) {
@@ -226,6 +276,16 @@ select {
         background-color: #614e41;
     }
 
+    .Overview-Container{
+        display: flex;
+        flex-direction: column;
+        align-items:center; /* Center the form horizontally */
+        border: 7px outset black; /* Define border style */
+        border-radius: 20px;
+        padding: 10px;
+        width:500px;
+    }
+
     .backBTN{
         position: absolute;
         top:3%;
@@ -260,6 +320,17 @@ select {
     }
 
     .response-container{
+        display: flex;
+        flex-direction: column;
+        align-items:center; /* Center the form horizontally */
+        border: 7px outset black; /* Define border style */
+        border-radius: 20px;
+        padding: 10px;
+        width:400px;
+        background-color: #614e41;
+    }
+
+    .Overview-Container{
         display: flex;
         flex-direction: column;
         align-items:center; /* Center the form horizontally */
