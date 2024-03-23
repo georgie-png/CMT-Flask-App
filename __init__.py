@@ -2,7 +2,6 @@ import os
 from flask import Flask, render_template, request
 from cmt_data import CMT_Data # import CMT_Data class from cmt_data.py file
 
-
 # initialise CMT_Data class with name of save data file
 data = CMT_Data("./Data/CMT_Data.json") 
 

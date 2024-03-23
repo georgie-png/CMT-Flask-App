@@ -208,6 +208,8 @@ class CMT_Data:
             
         np_classify_data =np.array(np_classify_data, dtype=np.float32)
 
+        print(np_classify_data.shape)
+
         raw_classifications = classify(self.model , np_classify_data, res_format='one_hot')
 
         classifications = raw_classifications.argmax(axis=1)
