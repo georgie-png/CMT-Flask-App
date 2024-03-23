@@ -213,6 +213,7 @@ label {
     display: flex;
     justify-content:space-around ;/* Distribute items with space around them */
     flex-flow: column;
+    width: 90%;
 }
 
 .Overview-Group ul {
@@ -267,6 +268,13 @@ label {
     background-color: rgba(128, 128, 128, 0.7);
   }
 
+  .collapsible-container{
+    border-radius: 5%;
+  }
+
+  input[type=number] {
+    -moz-appearance: textfield;
+  }
 
 
 /* Media Query for differet dimesions for tablet and phones to make more mobile friendly! */
@@ -282,13 +290,25 @@ label {
     }
     /* Makes the form input bigger for Tablets and Phones */
     input{
-        height: 40px;
+        height: 60px;
+        width: 100%;
+        font-size: 200%;
        }
-       
+    label{
+        font-size: 200%;
+    }
+    #pickup-form{
+        width: 90%;
+    }
+    #nav{
+        height: 100px;
+    }
 
        /* Makes the select kitchen input bigger for Tablets and Phones */
-       select{
-        height: 40px;
+    select{
+        height: 60px;
+        width: 100%;
+        font-size: 200%;
        }
        
 }

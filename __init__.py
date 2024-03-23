@@ -4,7 +4,7 @@ from cmt_data import CMT_Data # import CMT_Data class from cmt_data.py file
 
 
 # initialise CMT_Data class with name of save data file
-data = CMT_Data("./Data/CMT_Data.json", True) 
+data = CMT_Data("./Data/CMT_Data.json") 
 
 # Function that creates the flask app for us
 def smuc_app(test_config=None):

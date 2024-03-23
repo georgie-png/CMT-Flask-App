@@ -1,8 +1,9 @@
 
 from datetime import datetime
 import json
-from train_evaluate import load_model_for_inference, classify
+from train_evaluate import load_model_for_inference, classify, print_summary
 import numpy as np
+from os import path
 
 
 # CMT_Data class that handles all the processes for the apps form inputs, outputs and json saving
@@ -29,7 +30,9 @@ class CMT_Data:
 
 
 
-        self.model = load_model_for_inference('./trained_models/example_model')
+        self.model, self.model_summary = load_model_for_inference('./trained_models/example_model')
+        print_summary(self.model_summary)
+        
 
     def load_JSON(self, file_name):
         """Loads a json at `file_name` into self.json 
@@ -50,7 +53,7 @@ class CMT_Data:
             time_stamp (bool, optional): if true saves json file with a timestamp
         """
 
-        file_name = self.working_file
+        file_name = path.splitext(self.working_file)[0]
         if time_stamp:
             file_name += "_"+str(datetime.now())
         file_name += ".json"
@@ -205,7 +208,7 @@ class CMT_Data:
             
         np_classify_data =np.array(np_classify_data, dtype=np.float32)
 
-        raw_classifications = classify(self.model[0] , np_classify_data, res_format='one_hot')
+        raw_classifications = classify(self.model , np_classify_data, res_format='one_hot')
 
         classifications = raw_classifications.argmax(axis=1)
 
