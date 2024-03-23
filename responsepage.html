@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static',     filename='css/template.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <title>Response Page</title>
+
+</head>
+<body>
+    <!-- Back Button -->
+<a class="backBTN" href="javascript:history.back()"><i class="fa-solid fa-arrow-left"></i></a>
+    <div class="borderboxresponse">
+    <div class="response-container">
+    <h1>Thank You!</h1>
+    <p>Your form has been submitted successfully.</p>
+    <h2>Submitted Form Data:</h2>
+    <div class="form-group">
+    <ul>
+        <!--Loops over the items over values. Key will represent the key of each key-value pair, and value will represent the corresponding value. -->
+        {% for key, value in values.items() %}
+        <!--Displays the key of the current key value pair -->
+        <li>
+                        <span class="key">{{ key }}:</span>
+                        <span class="value">{{ value }}</span>
+                    </li>
+        {% endfor %}
+    </div>
+    </ul>
+</div>
+</div>
+</body>
+</html>
