@@ -123,11 +123,6 @@ label {
     margin-bottom: 3px;
 }
 
-input[type="option"],
-select {
-    flex: 0.45; /* Make input fields and select take up more space */
-}
-
 .submit{
     margin-top: 20px;
     width:60px;
@@ -285,6 +280,17 @@ select {
         color: white; /* Change color as needed */
         border: 5px outset white; /* Define border style */
     }
+    /* Makes the form input bigger for Tablets and Phones */
+    input{
+        height: 40px;
+       }
+       
+
+       /* Makes the select kitchen input bigger for Tablets and Phones */
+       select{
+        height: 40px;
+       }
+       
 }
    
 @media screen and (max-width: 650px) {
@@ -296,7 +302,7 @@ select {
         background-color: rgb(250, 229, 194, 0.3);
         border-radius: 20px;
         padding-top: 10px;
-        width:500px
+        width:450px
     }
 
     .response-container{
