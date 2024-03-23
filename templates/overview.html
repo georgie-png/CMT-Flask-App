@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static',     filename='css/template.css') }}">
+    <script type='text/javascript' src="{{ url_for('static', filename='js/script.js') }}"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <title>Overview</title>
 
@@ -18,7 +19,14 @@
         <p>Summary of all the kitchen stocks.</p>
         <div class="Overview-Group" >
     <!-- Iterate over kitchens_display_values and display data for each kitchen -->
-    {% for kitchen_display_val in kitchens_display_values %}
+    {% for kitchen_display_val in kitchens_display_values  %}
+
+    <!--This will loop over each kitchen_display_values in the list and assign it each an index -->
+    <!--Also created a collapsilbe-container which allow each kitchen to be shown when clicked -->
+    <div class="collapsible-container">
+        <button class="collapsible"><h3 class= "kitchenname">Kitchen 000{{ loop.index0 }}:</h3> </button>
+        <div class="content">
+    
     <ul>
         <!--Iterates over each key-value pair in the kitchen_display_val dictionary, which represents the display values for a kitchen.-->
         {% for food_label, food_value in kitchen_display_val.items() %}
@@ -29,6 +37,9 @@
             </li>
         {% endfor %}
     </ul>
+   
+        </div>
+    </div>
     {% endfor %}
 </div>
     </div>
@@ -36,4 +47,7 @@
 </head>
     
 </body>
+
+  </script>
 </html>
+
