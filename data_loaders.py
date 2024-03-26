@@ -4,7 +4,6 @@ from torch.utils.data import Dataset
 
 import json
 
-
 class KitchenDataset(Dataset):
     def __init__(self, data_path, num_examples: int = None):
         self.data_path = data_path

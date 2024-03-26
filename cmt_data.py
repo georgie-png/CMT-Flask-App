@@ -31,7 +31,6 @@ class CMT_Data:
 
 
         self.model, self.model_summary = load_model_for_inference('./trained_models/example_model')
-        print_summary(self.model_summary)
         
 
     def load_JSON(self, file_name):
@@ -60,7 +59,7 @@ class CMT_Data:
 
         #save data from a JSON file 
         with open(file_name,"w") as write_file:
-            json.dump(self.json, write_file, indent=4, default=str)
+            json.dump(self.json, write_file, indent=4, cls=NumpyArrayEncoder)
 
 
     def add_kitchen_data(self, form_data):
@@ -89,15 +88,21 @@ class CMT_Data:
         kitchen_index = self.check_kitchen_indx(values[0])
         kitchen_data['kitchen_label'] = kitchen_index
         kitchen_data['food_data'] = values[1:]
-        kitchen_data['time_stamp'] = datetime.now()
+        kitchen_data['time_stamp'] = datetime.now().strftime("%m/%d/%Y, %H:%M:%S")
         self.kitchens[kitchen_index].food_data = kitchen_data['food_data']
         
+        np_food_data = self.stack_data(kitchen_data['food_data'])
+
+
         try:
 
             self.json["kitchen_data"].append(kitchen_data)
+            self.json["food_data"].append(np_food_data)
 
         except:
             self.json["kitchen_data"]=[kitchen_data]
+            self.json["food_data"]=np_food_data
+
 
 
         self.save_JSON()
@@ -181,16 +186,9 @@ class CMT_Data:
                 if np.sum(indxs) == len(self.kitchens):
                     break
 
+    def stack_data(self, values):
 
-    def run_classify(self, values):
-        """Takes in the values and then forms them into the right array shape for the model, runs it through classifier to be displayed and saved
 
-        Args:
-            values (list): A list of the food values taken from the form
-
-        Returns:
-            tuple {dict|dict}: two dictionaries the first holding the key value pairs for flask to display. The second all of the input/outputs of the  classification.
-        """
 
         np_kitchen_data = [] 
         np_classify_data = []
@@ -206,10 +204,21 @@ class CMT_Data:
             this_value = np.vstack((np_kitchen_data, this_value))
             np_classify_data.append(this_value)
             
-        np_classify_data = np.array(np_classify_data, dtype=np.float32)
 
-        print(np_classify_data.shape)
-        print(self.model)
+
+        return np_classify_data
+
+    def run_classify(self, values):
+        """Takes in the values and then forms them into the right array shape for the model, runs it through classifier to be displayed and saved
+
+        Args:
+            values (list): A list of the food values taken from the form
+
+        Returns:
+            tuple {dict|dict}: two dictionaries the first holding the key value pairs for flask to display. The second all of the input/outputs of the  classification.
+        """
+
+        np_classify_data = self.stack_data(values)
 
 
         raw_classifications = classify(self.model , np_classify_data)
@@ -295,3 +304,20 @@ class Kitchen:
         return display_val
 
         
+class NumpyArrayEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, np.ndarray):
+            return obj.tolist()
+        return json.JSONEncoder.default(self, obj)
+    
+
+class NumpyArrayEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, np.integer):
+            return int(obj)
+        elif isinstance(obj, np.floating):
+            return float(obj)
+        elif isinstance(obj, np.ndarray):
+            return obj.tolist()
+        else:
+            return super(NumpyArrayEncoder, self).default(obj)

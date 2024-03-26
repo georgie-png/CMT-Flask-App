@@ -1,9 +1,11 @@
 import os
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, session, redirect
 from cmt_data import CMT_Data # import CMT_Data class from cmt_data.py file
 
 # initialise CMT_Data class with name of save data file
 data = CMT_Data("./Data/CMT_Data.json") 
+
+Pass = "WeLoveAutonomy"
 
 # Function that creates the flask app for us
 def smuc_app(test_config=None):
@@ -11,14 +13,38 @@ def smuc_app(test_config=None):
     # initialise flask app
     app = Flask(__name__)
 
+    app.secret_key = 'kwer!wh83£$47dh82u&wh28?'
+
     # Renders the basic template as the index
-    @app.route("/")
+    @app.route("/", methods=['GET', 'POST'])
     def index():
-        return render_template("template.html")
+
+        # if  logged in render  nav page
+        if session.get('logged_ in') and session["logged_ in"]==True:
+            return render_template("Nav.html")
+
+        if request.method == "POST":
+
+            pw = request.form.get("pw") 
+
+            if pw == Pass:
+                session["logged_ in"]=True
+                return render_template("Nav.html")
+            else:
+                session["logged_ in"]=False
+            
+            
+            
+        return render_template("index.html")
 
     # Renders the pickup form from dynamic values
     #@app.route("/pickup" ,methods=['GET', 'POST'])
     def pickupform():
+
+        # if not logged in redirect to main page
+        if not session.get('logged_ in') or session["logged_ in"]==True:
+            return redirect("/")
+
         global data
 
         if request.method == 'POST':
@@ -32,6 +58,11 @@ def smuc_app(test_config=None):
     # Renders the kitchen form from dynamic values
     @app.route("/kitchen",methods=['GET', 'POST'])
     def kitchenform():
+
+        # if not logged in redirect to main page
+        if not session.get('logged_ in') or session["logged_ in"]!=True:
+            return redirect("/")
+        
         global data
 
         if request.method == 'POST':
@@ -43,9 +74,15 @@ def smuc_app(test_config=None):
         # Render form template with dynamic values
         return render_template("kitchenform.html", dynamic_labels=data.json["food_labels"],dynamic_options=data.json['kitchen_labels'])
     
+
+
      # Renders the overview page displaying data for all kitchens.
     @app.route("/overview")
     def overview():
+
+        # if not logged in redirect to main page
+        if not session.get('logged_ in') or session["logged_ in"]!=True:
+            return redirect("/")
 
         global data  # Indicates that 'data' is a global variable
 
@@ -64,7 +101,6 @@ def smuc_app(test_config=None):
         # Return the list of display values for all kitchens 
         return render_template("overview.html", kitchens_display_values=kitchens_display_values)
         
-
     # returns the flask app
     return app
 
