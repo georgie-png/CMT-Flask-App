@@ -1,9 +1,9 @@
 import os
-from flask import Flask, render_template, request, session, redirect
+from flask import Flask, render_template, request, session, redirect, send_file
 from cmt_data import CMT_Data # import CMT_Data class from cmt_data.py file
 
 # initialise CMT_Data class with name of save data file
-data = CMT_Data("./Data/CMT_Data.json") 
+data = CMT_Data("Data/CMT_Data.json") 
 
 Pass = "WeLoveAutonomy"
 
@@ -14,6 +14,8 @@ def smuc_app(test_config=None):
     app = Flask(__name__)
 
     app.secret_key = 'kwer!wh83£$47dh82u&wh28?'
+
+    print("Password: ", Pass)
 
     # Renders the basic template as the index
     @app.route("/", methods=['GET', 'POST'])
@@ -38,7 +40,8 @@ def smuc_app(test_config=None):
         return render_template("index.html")
 
     # Renders the pickup form from dynamic values
-    #@app.route("/pickup" ,methods=['GET', 'POST'])
+    ### Curently not in use
+    #@app.route("/pickup" ,methods=['GET', 'POST']) 
     def pickupform():
 
         # if not logged in redirect to main page
@@ -101,8 +104,20 @@ def smuc_app(test_config=None):
         # Return the list of display values for all kitchens 
         return render_template("overview.html", kitchens_display_values=kitchens_display_values)
         
+
+    @app.route('/download')
+    def download_file():
+
+        global data
+
+        path = data.working_file
+
+        return send_file(path, as_attachment=True)
+    
+
     # returns the flask app
     return app
+    
 
     
 if __name__ == "__main__":

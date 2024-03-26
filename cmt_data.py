@@ -16,6 +16,7 @@ class CMT_Data:
             file_name (sting): Path to save(d) data file
             start_fresh (bool, optional): If set to true it will reset data, and save the old (if there was one) with a timestamp.
         """
+
         self.working_file = file_name
         try:
             self.load_JSON(file_name)
@@ -39,7 +40,7 @@ class CMT_Data:
         Args:
             file_name (string): path to json file
         """
-
+        
         #Load data from a JSON file 
         with open(file_name,"r") as read_file:
             self.json = json.load(read_file)
@@ -187,8 +188,6 @@ class CMT_Data:
                     break
 
     def stack_data(self, values):
-
-
 
         np_kitchen_data = [] 
         np_classify_data = []
