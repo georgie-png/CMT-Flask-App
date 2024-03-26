@@ -15,8 +15,11 @@ def smuc_app(test_config=None):
     app = Flask(__name__)
 
     app.secret_key = 'kwer!wh83£$47dh82u&wh28?'
-
+    print("#############################")
+    print("#############################")
     print("Password: ", Pass)
+    print("#############################")
+    print("#############################")
 
     # Renders the basic template as the index
     @app.route("/", methods=['GET', 'POST'])
@@ -112,8 +115,6 @@ def smuc_app(test_config=None):
         if admin_pass!= admin_password or not session.get('logged_ in') or session["logged_ in"]!=True:
             return redirect("/")
         
-
-
         global data
 
         path = data.working_file

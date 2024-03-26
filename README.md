@@ -23,6 +23,7 @@ Mahinya:
 - [x] change the html template titles so it displays correctly on the browser tab
 - [ ] Update to new colour scheme
 - [ ] can you make the response/receipt pages look the same as the others? eg have the header and nav above it and in the lighter colours, bigger text and wider areas.
+- [ ] get the password page to fit in.
 
 
 George: 
