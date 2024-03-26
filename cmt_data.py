@@ -206,11 +206,13 @@ class CMT_Data:
             this_value = np.vstack((np_kitchen_data, this_value))
             np_classify_data.append(this_value)
             
-        np_classify_data =np.array(np_classify_data, dtype=np.float32)
+        np_classify_data = np.array(np_classify_data, dtype=np.float32)
 
         print(np_classify_data.shape)
+        print(self.model)
 
-        raw_classifications = classify(self.model , np_classify_data, res_format='one_hot')
+
+        raw_classifications = classify(self.model , np_classify_data)
 
         classifications = raw_classifications.argmax(axis=1)
 
@@ -227,6 +229,7 @@ class CMT_Data:
 
             if values[i] == 0:
                 continue
+
             kitchen_label = self.json['kitchen_labels'][classification]
             food_label = self.json['food_labels'][i]
             display_values[food_label] = kitchen_label

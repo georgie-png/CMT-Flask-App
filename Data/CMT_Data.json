@@ -1,0 +1,50 @@
+{
+    "food_labels": [
+        "Number of people",
+        "Hunger (0-10)",
+        "Bread and rolls (g)",
+        "Pasta (g)",
+        "Breakfast cereals (g)",
+        "Mushrooms (g)",
+        "Root vegetables (g)",
+        "Brassica vegetables (g)",
+        "Leaf vegetables (g)",
+        "Legumes (g)",
+        "Fruiting Vegetables (g)",
+        "Stone Fruits (g)",
+        "Pome Fruits (g)",
+        "Nuts (g)",
+        "Chocolate (g)"
+    ],
+    "kitchen_labels": [
+        "Catalina",
+        "Neleni",
+        "Julie",
+        "Mariana",
+        "Tonie",
+        "Ozan"
+    ],
+    "kitchen_data": [
+        {
+            "kitchen_label": 0,
+            "food_data": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "time_stamp": "2024-03-26 18:14:22.683002"
+        }
+    ]
+}

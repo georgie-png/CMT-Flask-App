@@ -45,12 +45,17 @@ body {
     text-align: center;
 }
 
-h1 {
+h1{
     color: white;
     text-align: center;
-   
+    font-size: xxx-large;
 }
 
+h4{
+    color: white;
+    text-align: center;
+    font-size: x-large;
+}
 
 #nav {
     background-color:#eeeeee;
@@ -108,7 +113,7 @@ a{
     background-color: rgb(250, 229, 194, 0.3);
     border-radius: 20px;
     padding-top: 30px;
-    width:800px
+    width:80%
 }
 
 .form-group {
@@ -275,7 +280,28 @@ label {
   input[type=number] {
     -moz-appearance: textfield;
   }
+  input{
+    height: 60px;
+    width: 100%;
+    font-size: 200%;
+   }
+label{
+    font-size: 200%;
+}
+#pickup-form{
+    width: 90%;
+}
 
+   /* Makes the select kitchen input bigger for Tablets and Phones */
+select{
+    height: 60px;
+    width: 100%;
+    font-size: 200%;
+   }
+.submit{
+    width: 90%;
+    height: 70px;
+ }
 
 /* Media Query for differet dimesions for tablet and phones to make more mobile friendly! */
 
@@ -289,28 +315,8 @@ label {
         border: 5px outset white; /* Define border style */
     }
     /* Makes the form input bigger for Tablets and Phones */
-    input{
-        height: 60px;
-        width: 100%;
-        font-size: 200%;
-       }
-    label{
-        font-size: 200%;
-    }
-    #pickup-form{
-        width: 90%;
-    }
-    #nav{
-        height: 100px;
-    }
 
-       /* Makes the select kitchen input bigger for Tablets and Phones */
-    select{
-        height: 60px;
-        width: 100%;
-        font-size: 200%;
-       }
-       
+
 }
    
 @media screen and (max-width: 650px) {

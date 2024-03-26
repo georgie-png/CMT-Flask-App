@@ -24,5 +24,5 @@ Mahinya:
 George: 
 - [x] setup the kitchen load/save data system.
 - [x] setup the pickup to ai data pipeline.
-- [ ] finish data save/load
+- [x] finish data save/load ✅ 2024-03-24
 

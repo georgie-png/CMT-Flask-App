@@ -17,7 +17,7 @@ def smuc_app(test_config=None):
         return render_template("template.html")
 
     # Renders the pickup form from dynamic values
-    @app.route("/pickup" ,methods=['GET', 'POST'])
+    #@app.route("/pickup" ,methods=['GET', 'POST'])
     def pickupform():
         global data
 
