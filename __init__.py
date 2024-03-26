@@ -6,6 +6,7 @@ from cmt_data import CMT_Data # import CMT_Data class from cmt_data.py file
 data = CMT_Data("Data/CMT_Data.json") 
 
 Pass = "WeLoveAutonomy"
+admin_password = "admin_pass"
 
 # Function that creates the flask app for us
 def smuc_app(test_config=None):
@@ -105,8 +106,13 @@ def smuc_app(test_config=None):
         return render_template("overview.html", kitchens_display_values=kitchens_display_values)
         
 
-    @app.route('/download')
-    def download_file():
+    @app.route('/download/<admin_pass>')
+    def download_file(admin_pass):
+
+        if admin_pass!= admin_password or not session.get('logged_ in') or session["logged_ in"]!=True:
+            return redirect("/")
+        
+
 
         global data
 
