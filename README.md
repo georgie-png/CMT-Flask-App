@@ -24,6 +24,9 @@ Mahinya:
 - [ ] Update to new colour scheme
 - [ ] can you make the response/receipt pages look the same as the others? eg have the header and nav above it and in the lighter colours, bigger text and wider areas.
 - [ ] get the password page to fit in.
+- [ ] Change overview page to have kitchen names not numbers.
+- [ ] change overview divs to be rounded and more friendly.
+- [ ] start a figma for training interfaces.
 
 
 George: 
@@ -31,3 +34,10 @@ George:
 - [x] setup the pickup to ai data pipeline.
 - [x] finish data save/load ✅ 2024-03-24
 
+
+Todays agenda:
+- talk through workshop
+- talk about next steps 
+    - aesthetic changes. 
+    - training/data interface.
+    - figma

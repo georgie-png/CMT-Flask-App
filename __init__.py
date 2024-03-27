@@ -25,20 +25,20 @@ def smuc_app(test_config=None):
     @app.route("/", methods=['GET', 'POST'])
     def index():
 
-        # if  logged in render  nav page
+        # if logged in render  nav page
         if session.get('logged_ in') and session["logged_ in"]==True:
             return render_template("Nav.html")
 
+        # on l0gin button
         if request.method == "POST":
-
+            # get password login
             pw = request.form.get("pw") 
-
+            # if password matches
             if pw == Pass:
+                # set session as logged in
                 session["logged_ in"]=True
-                return render_template("Nav.html")
-            else:
-                session["logged_ in"]=False
-            
+                # render nav
+                return render_template("Nav.html")            
             
             
         return render_template("index.html")
@@ -108,7 +108,7 @@ def smuc_app(test_config=None):
         # Return the list of display values for all kitchens 
         return render_template("overview.html", kitchens_display_values=kitchens_display_values)
         
-
+    # downloads the 
     @app.route('/download/<admin_pass>')
     def download_file(admin_pass):
 
