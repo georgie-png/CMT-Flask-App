@@ -1,4 +1,5 @@
 # CMT-Flask-App
+## Smuc styling branch
 A flask app for the CMT test run
 
 To test run:
@@ -33,6 +34,8 @@ George:
 - [x] setup the kitchen load/save data system.
 - [x] setup the pickup to ai data pipeline.
 - [x] finish data save/load ✅ 2024-03-24
+- [ ] check file is there before download.
+
 
 
 Todays agenda:
