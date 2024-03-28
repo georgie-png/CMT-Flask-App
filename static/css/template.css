@@ -113,7 +113,8 @@ a{
     background-color: rgb(250, 229, 194, 0.3);
     border-radius: 20px;
     padding-top: 30px;
-    width:80%
+    width:80%;
+    margin-bottom: 20px;
 }
 
 .form-group {
@@ -196,6 +197,19 @@ label {
 
 /* CSS to style the key-value pairs in the Overview Page */
 
+.backBTN2{
+    position: absolute;
+    top:48%;
+    left:23%;
+    text-decoration: none;
+    color: white; /* Change color as needed */
+    border: 5px outset white; /* Define border style */
+}
+
+.backBTN2:hover{
+    background-color: rgb(250, 229, 194, 0.3);
+}
+
 .OverviewKitchenBorder{
     display: flex;
     justify-content: center;
@@ -245,7 +259,6 @@ label {
     color:white;
     font-weight: bold;
     text-align: center;
-    text-decoration: underline;
 }
 
 /*Collapible-Content for Overview Page*/
@@ -260,6 +273,8 @@ label {
     text-align: left;
     outline: none;
     font-size: 15px;
+    border-radius: 10px;
+    margin-bottom: 8px;
   }
   
   .active, .collapsible:hover {
@@ -268,15 +283,18 @@ label {
   
   .content {
     padding: 0 18px;
+    margin-bottom: 10px;
     display: none;
     overflow: hidden;
-    background-color: rgba(128, 128, 128, 0.7);
+    background-color: #614e41;
+    border-radius: 10px;
   }
 
+  /*
   .collapsible-container{
-    border-radius: 5%;
+   display:block;
   }
-
+*/
   input[type=number] {
     -moz-appearance: textfield;
   }
@@ -301,6 +319,29 @@ select{
 .submit{
     width: 90%;
     height: 70px;
+ }
+
+ /*Index HTML Login Syling */
+ .password_txt{
+    padding-top: 20px;
+    text-align: center;
+    padding-bottom: 20px;
+    font-weight: bold;
+ }
+
+ .login{
+    margin-top: 20px;
+    width:400px;
+    height:70px;
+    font-weight: bold;
+    align-self: center;
+    font-size: 30px;
+ }
+
+ #Password{
+    height: 60px;
+    width: 650px;
+    font-size: 200%;
  }
 
 /* Media Query for differet dimesions for tablet and phones to make more mobile friendly! */

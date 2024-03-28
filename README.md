@@ -24,10 +24,10 @@ Mahinya:
 - [x] try to add a display screen to monitor all kitchens values (maybe unlinked). you should be able to us the kitchens array of 'Kitchen' class, and get their 'display_val' (e.g. data.kitchens[0].display_val) and it will return a key val pairing.
 - [x] change the html template titles so it displays correctly on the browser tab
 - [ ] Update to new colour scheme
-- [ ] can you make the response/receipt pages look the same as the others? eg have the header and nav above it and in the lighter colours, bigger text and wider areas.
-- [ ] get the password page to fit in.
-- [ ] Change overview page to have kitchen names not numbers.
-- [ ] change overview divs to be rounded and more friendly.
+- [X] can you make the response/receipt pages look the same as the others? eg have the header and nav above it and in the lighter colours, bigger text and wider areas.
+- [X] get the password page to fit in.
+- [X] Change overview page to have kitchen names not numbers.
+- [X] change overview divs to be rounded and more friendly.
 - [ ] start a figma for training interfaces.
 
 

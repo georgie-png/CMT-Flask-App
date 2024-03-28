@@ -106,7 +106,7 @@ def smuc_app(test_config=None):
         # Append the display value to the list
             kitchens_display_values.append(display_val)
         # Return the list of display values for all kitchens 
-        return render_template("overview.html", kitchens_display_values=kitchens_display_values)
+        return render_template("overview.html", kitchens_display_values=kitchens_display_values, kitchen_labels=data.json['kitchen_labels'])
         
     # downloads the 
     @app.route('/download/<admin_pass>')
